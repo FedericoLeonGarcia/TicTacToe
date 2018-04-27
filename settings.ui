@@ -57,14 +57,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="xRadio">
+          <widget class="QRadioButton" name="xValue">
            <property name="text">
             <string>X</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="oRadio">
+          <widget class="QRadioButton" name="oValue">
            <property name="text">
             <string>O</string>
            </property>
@@ -78,13 +78,6 @@
       <widget class="QCheckBox" name="loggingCheck">
        <property name="text">
         <string>logging</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="deleteSaveBtn">
-       <property name="text">
-        <string>Delete Save</string>
        </property>
       </widget>
      </item>

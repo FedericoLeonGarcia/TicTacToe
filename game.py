@@ -66,6 +66,8 @@ class TicTacToe(QMainWindow):
             exit()
         else:
             event.ignore()
+        if self.logging:
+            logging.info("You exit and saved the game")
 
     def changePlayer(self, arg):
         self.user = arg
@@ -73,18 +75,22 @@ class TicTacToe(QMainWindow):
             self.computer = "X"
         else:
             self.computer = "O"
-
+        if self.logging:
+            logging.info("You have choosen a different simbol")
     def showSettings(self):
         settings.show()
+
+        if self.logging:
+            logging.info("You have open settings")
 
     def restart(self):
         self.wins = 0
         self.losses = 0
         self.draws = 0
-        self.resultText = "You have restarted the game!!!!!"
         self.updateUI()
-        self.rollingForLabel.setText("RESTART COMPLETE!!")
-
+        self.resultLabel = "You have restarted the game!!!!!"
+        if self.logging:
+            logging.info("You restarted the Winings, Draw and losses")
     def play(self, arg, value):
 
 
@@ -129,8 +135,10 @@ class TicTacToe(QMainWindow):
             button.setFont(temp)
         self.used = []
         self.newGameButton.setEnabled(False)
-        self.result = "Another round of Tic Tac Toe!"
+        self.result = "Another round"
         self.updateUI()
+        if self.logging:
+            logging.info("You choose to play another game")
 
     def updateUI(self):
         self.lossesLabel.setText(str(self.losses))
@@ -211,6 +219,9 @@ class TicTacToe(QMainWindow):
                 self.makeMove(button, self.computer)
                 return
 
+        if self.logging:
+            logging.info("You just make a move")
+
     def checkWinner(self):
         if self.button1.text() == self.button2.text() == self.button3.text() and self.button1.text() in self.values:
             return self.button1, self.button2, self.button3
@@ -249,11 +260,10 @@ class Settings(QDialog):
 
         super().__init__()
         uic.loadUi("settings.ui", self)
-        self.xRadio.setChecked(True)
+        self.xValue.setChecked(True)
 
-        self.oRadio.toggled.connect(lambda: game.changePlayer('O'))
-        self.xRadio.toggled.connect(lambda: game.changePlayer('X'))
-
+        self.oValue.toggled.connect(lambda: game.changePlayer('O'))
+        self.xValue.toggled.connect(lambda: game.changePlayer('X'))
 
 
 
